@@ -1,0 +1,22 @@
+[
+    {
+        "connection_name": "Giovanny",
+        "host": "192.168.0.105",
+        "user": "beru",
+        "ports": [
+            21,
+            3306,
+            22
+        ]
+    },
+    {
+        "connection_name": "Giovanny-connection",
+        "host": "192.168.0.105",
+        "user": "beru",
+        "ports": [
+            21,
+            3306,
+            22
+        ]
+    }
+]

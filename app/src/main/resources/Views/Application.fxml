@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.beru.ServerController.Controller.ApplicationController">
+  <children>
+      <HBox VBox.vgrow="NEVER">
+         <children>
+          <MenuBar id="pane">
+            <menus>
+              <Menu mnemonicParsing="false" text="File">
+                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#NewProject" text="New">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#Connection" text="Connect" />
+                        <MenuItem mnemonicParsing="false" onAction="#Open" text="Send File">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  <Menu mnemonicParsing="false" text="Recent connections">
+                           <items>
+                              <MenuItem fx:id="recentConnection" mnemonicParsing="false" onAction="#recentCon" text="Unspecified Action">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                           </items>
+                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#disconnect" text="Close connection" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <SeparatorMenuItem id="sep" mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem id="sep" mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#close" text="Quit">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="E" control="UP" meta="DOWN" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Edit">
+                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#back" text="Undo">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#forward" text="Redo">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  <SeparatorMenuItem id="sep" mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem id="sep" mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Send File">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+                </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Help">
+                <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                </items>
+              </Menu>
+            </menus>
+          </MenuBar>
+            <Separator prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER" prefHeight="25.0" prefWidth="37.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="12.0" prefWidth="30.0" text="FTP" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="ftp_connect" fill="#ff2121" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="25.0" prefWidth="37.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="13.0" prefWidth="32.0" text="BD" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="bd_connect" fill="#ff1f1f" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="705.0" layoutY="10.0" prefHeight="25.0" prefWidth="37.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="13.0" prefWidth="32.0" text="SSH" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Label>
+                  <Circle fx:id="ssh_connect" fill="#ff1f1f" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button layoutX="1241.0" layoutY="10.0" mnemonicParsing="false" onAction="#minimized" text="-" textFill="#002cff" />
+            <Button layoutX="1267.0" layoutY="10.0" mnemonicParsing="false" onAction="#maximized" text="[ ]" textFill="#002cff" />
+            <Button mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="51.0" text="x" textFill="RED" />
+         </children>
+      </HBox>
+      <TabPane fx:id="tabPane" rotateGraphic="true" side="LEFT" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab text="Manager">
+               <content>
+                  <SplitPane fx:id="remoteServerSplit" dividerPositions="0.2478017585931255" prefHeight="160.0" prefWidth="200.0">
+                    <items>
+                        <VBox id="pane" fx:id="loginPNL" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                           <children>
+                              <Label text="REMOTE SERVER CONNECTION">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="conNameTXT" layoutX="10.0" layoutY="276.0" promptText="Connection name: ">
+                                 <contextMenu>
+                                    <ContextMenu fx:id="cacheConnectionsName" />
+                                 </contextMenu>
+                              </TextField>
+                              <TextField fx:id="hostTXT" promptText="Host:">
+                                 <contextMenu>
+                                    <ContextMenu fx:id="cacheConnectionsContext" />
+                                 </contextMenu>
+                              </TextField>
+                              <TextField fx:id="userTXT" layoutX="10.0" layoutY="334.0" promptText="User:" />
+                              <PasswordField fx:id="passwordTXT" promptText="Password:" />
+                              <TitledPane expanded="false" text="Remote ports">
+                                 <content>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                       <children>
+                                          <Label text="FTP" />
+                                          <TextField fx:id="ftp_portTXT" prefHeight="25.0" prefWidth="243.0" promptText="FTP: (21)" />
+                                          <Label layoutX="20.0" layoutY="20.0" text="SQL" />
+                                          <TextField fx:id="sql_portTXT" layoutX="20.0" layoutY="20.0" prefHeight="25.0" prefWidth="243.0" promptText="SQL: (3306)" />
+                                          <Label layoutX="20.0" layoutY="82.0" text="SSH" />
+                                          <TextField fx:id="ssh_portTXT" layoutX="20.0" layoutY="55.0" prefHeight="25.0" prefWidth="243.0" promptText="SSH: (22)" />
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </TitledPane>
+                              <Button mnemonicParsing="false" onAction="#Connection" text="Connect" />
+                           </children>
+                        </VBox>
+                        <AnchorPane id="pane" fx:id="remoteStatus" prefHeight="200.0" prefWidth="200.0" />
+                    </items>
+                  </SplitPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="FTP">
+               <content>
+                  <VBox>
+                     <children>
+                        <SplitPane id="split" dividerPositions="0.7333333333333333" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+                           <items>
+                            <SplitPane id="split" dividerPositions="0.2237871674491393, 0.7417840375586855" prefHeight="-1.0" prefWidth="-1.0">
+                              <items>
+                                    <VBox id="pane">
+                                       <children>
+                                          <HBox id="pane" prefHeight="16.0" prefWidth="317.0" spacing="5.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#NewProject" text="New Project" HBox.hgrow="ALWAYS" />
+                                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#Open" text="Open" HBox.hgrow="ALWAYS" />
+                                                <Button layoutX="159.0" layoutY="10.0" mnemonicParsing="false" onAction="#Delete" text="Delete" HBox.hgrow="ALWAYS" />
+                                                <Separator HBox.hgrow="ALWAYS" />
+                                                <Button mnemonicParsing="false" onAction="#refreshProjects" prefHeight="25.0" prefWidth="22.0" text="↺" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <ScrollPane id="pane" fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <VBox id="pane" fx:id="pnlRemoteFolders" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" />
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="-1.0" prefWidth="-1.0">
+                                  <content>
+                                    <AnchorPane id="pane" fx:id="pnlRemoteFiles" minHeight="-1.0" minWidth="-1.0" prefHeight="637.0" prefWidth="625.0">
+                                             <children>
+                                                <HBox id="pane" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="925.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#back" text="&lt;">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#forward" text="&gt;">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                      <Label id="path" fx:id="pathLBL" prefHeight="31.0" prefWidth="721.0" text="Remote path" HBox.hgrow="ALWAYS">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" right="10.0" />
+                                                         </HBox.margin>
+                                                         <padding>
+                                                            <Insets left="10.0" right="10.0" />
+                                                         </padding>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <TableView id="pane" fx:id="filesTable" editable="true" fixedCellSize="0.0" layoutX="66.0" layoutY="38.0" onMouseClicked="#itemSelection" prefHeight="432.0" prefWidth="925.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="38.0">
+                                                  <columns>
+                                                    <TableColumn fx:id="nameColumnFiles" prefWidth="191.0" text="Name" />
+                                                      <TableColumn fx:id="pathColumnFiles" prefWidth="191.0" text="Path" />
+                                                      <TableColumn fx:id="typeColumnFiles" prefWidth="115.0" text="Type" />
+                                                  </columns>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                   <contextMenu>
+                                                      <ContextMenu>
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" onAction="#openLocalFile" text="Open" />
+                                                            <MenuItem mnemonicParsing="false" onAction="#renameLocalFile" text="Rename" />
+                                                            <SeparatorMenuItem mnemonicParsing="false" />
+                                                            <MenuItem mnemonicParsing="false" onAction="#DeleteLocalFile" text="Delete" />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                  </content>
+                                </ScrollPane>
+                                <AnchorPane id="pane">
+                                       <children>
+                                          <TreeView id="tree" fx:id="filesTreeView" onMouseClicked="#setPath" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #161616;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       </children>
+                                </AnchorPane>
+                              </items>
+                            </SplitPane>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <TextArea id="consoleOutputText" fx:id="consoleOutputTXT" editable="false" nodeOrientation="LEFT_TO_RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </TextArea>
+                                    <HBox>
+                                       <children>
+                                          <Label id="console" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="20.0" text="&gt; " textFill="#fbff1f" HBox.hgrow="ALWAYS" />
+                                          <Label id="console" fx:id="consolePathLBL" contentDisplay="CENTER" prefHeight="25.0" text="C:\\" textFill="#4ebbff" HBox.hgrow="ALWAYS" />
+                                          <TextField fx:id="consoleTXT" onKeyPressed="#setCommand" prefHeight="25.0" prefWidth="1135.0" promptText="Code: " HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="DB">
+               <content>
+                  <VBox>
+                     <children>
+                        <SplitPane dividerPositions="0.23058446757405926" VBox.vgrow="ALWAYS">
+                           <items>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <TableView id="pane" prefHeight="636.0" prefWidth="285.0" VBox.vgrow="ALWAYS">
+                                      <columns>
+                                        <TableColumn prefWidth="64.0" text="ID" />
+                                        <TableColumn prefWidth="219.0" text="Name" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="New" />
+                                                <SeparatorMenuItem mnemonicParsing="false" />
+                                                <MenuItem mnemonicParsing="false" text="Delete" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                              <TabPane prefHeight="200.0" prefWidth="200.0">
+                                <tabs>
+                                  <Tab text="Querys">
+                                    <content>
+                                          <SplitPane dividerPositions="0.5" orientation="VERTICAL">
+                                             <items>
+                                            <AnchorPane id="pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox id="pane" fx:id="queryContent" alignment="TOP_CENTER" fillHeight="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <TextField prefHeight="34.0" prefWidth="906.0" promptText="SQL Query:" HBox.hgrow="ALWAYS">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </TextField>
+                                                            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="52.0" text="&gt;" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                                  <tabs>
+                                                    <Tab text="Tables info">
+                                                      <content>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                      </content>
+                                                    </Tab>
+                                                      <Tab text="Columns info">
+                                                        <content>
+                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                        </content>
+                                                      </Tab>
+                                                      <Tab text="Data">
+                                                        <content>
+                                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                        </content>
+                                                      </Tab>
+                                                  </tabs>
+                                                </TabPane>
+                                             </items>
+                                          </SplitPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="SSH" />
+            <Tab text="Editor">
+               <content>
+                  <TabPane fx:id="editorTabs" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS">
+                    <tabs>
+                      <Tab text="Untitled file">
+                           <content>
+                              <AnchorPane id="pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-border-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <HBox id="pane" fx:id="queryContent1" fillHeight="false">
+                                             <children>
+                                                <VBox id="pane" fx:id="numbers" alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="25.0" spacing="2.0">
+                                                   <padding>
+                                                      <Insets top="5.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <TextArea id="queryCode" fx:id="queryTXT" onKeyReleased="#changeTextQuery" prefHeight="50.0" scrollLeft="-1.0" scrollTop="-1.0" wrapText="true" HBox.hgrow="ALWAYS">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </TextArea>
+                                             </children>
+                                          </HBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+    <HBox id="pane" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+         <children>
+            <ProgressIndicator id="status" fx:id="status" progress="0.0" />
+            <Separator HBox.hgrow="SOMETIMES" />
+            <Label id="error" fx:id="errorLogLBL" text="Error Log" textFill="RED" />
+         </children>
+    </HBox>
+  </children>
+</VBox>
